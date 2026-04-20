@@ -1,10 +1,147 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Main entry point for the Single Page Application -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <!-- ═══ MAIN PAGES ═══ -->
+
+  <!-- Homepage / Landing -->
   <url>
     <loc>https://kampalathreads.ug/</loc>
     <lastmod>2026-04-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+
+  <!-- Shop / Collection -->
+  <url>
+    <loc>https://kampalathreads.ug/#shop</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- About Us -->
+  <url>
+    <loc>https://kampalathreads.ug/#about</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Contact -->
+  <url>
+    <loc>https://kampalathreads.ug/#contact</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- HTML Site Map -->
+  <url>
+    <loc>https://kampalathreads.ug/#sitemap</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+  <!-- ═══ PRODUCT CATEGORY PAGES ═══ -->
+
+  <url>
+    <loc>https://kampalathreads.ug/#shop?filter=women</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://kampalathreads.ug/#shop?filter=men</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://kampalathreads.ug/#shop?filter=kids</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://kampalathreads.ug/#shop?filter=traditional</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://kampalathreads.ug/#shop?filter=modern</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- ═══ PRODUCT PAGES ═══ -->
+
+  <url>
+    <loc>https://kampalathreads.ug/#shop</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://kampalathreads.ug/wrap%20dress.jpeg</image:loc>
+      <image:title>Kitenge Wrap Dress - Authentic African Fashion</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://kampalathreads.ug/mens%20kitengye.jpeg</image:loc>
+      <image:title>Men's Kitenge Shirt - African Streetwear</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://kampalathreads.ug/gomesi.jpeg</image:loc>
+      <image:title>Classic Gomesi - Traditional Ugandan Dress</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://kampalathreads.ug/kanzu.jpeg</image:loc>
+      <image:title>Men's Kanzu - Traditional Ugandan Menswear</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://kampalathreads.ug/kids%20kitengye.jpeg</image:loc>
+      <image:title>Kids Kitenge Set - Children's African Fashion</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://kampalathreads.ug/baby's%20kitengye.jpeg</image:loc>
+      <image:title>Baby Kitenge Set - Baby African Fashion</image:title>
+    </image:image>
+  </url>
+
+  <!-- ═══ TRUST & POLICY PAGES ═══ -->
+
+  <url>
+    <loc>https://kampalathreads.ug/#shipping-policy</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://kampalathreads.ug/#returns-policy</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://kampalathreads.ug/#size-guide</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://kampalathreads.ug/#faqs</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
 </urlset>

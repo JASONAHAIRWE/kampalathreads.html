@@ -124,20 +124,13 @@ document.querySelectorAll('.footer-filter-link').forEach(link => {
     });
 });
 
-// ── TOAST & SUPPORT LINKS ──
+// ── TOAST ──
 function showToast(msg) {
     const t = document.getElementById('toast');
     t.textContent = msg;
     t.classList.add('show');
     setTimeout(() => t.classList.remove('show'), 2800);
 }
-
-document.querySelectorAll('.coming-soon').forEach(link => {
-    link.addEventListener('click', (e) => {
-        e.preventDefault();
-        showToast('🚧 ' + e.target.textContent + ' page is coming soon!');
-    });
-});
 
 // ── CART MODAL LOGIC ──
 const cartModal = document.getElementById('cart-modal');
@@ -267,6 +260,45 @@ document.getElementById('submit-contact').addEventListener('click', (e) => {
     // Clear form
     document.querySelectorAll('#contact-form input, #contact-form textarea, #contact-form select').forEach(el => el.value = '');
     showToast('✅ Message sent! We\'ll reply within 24 hours.');
+});
+
+// ── FAQ ACCORDION ──
+document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+
+        // Close all others
+        document.querySelectorAll('.faq-item.open').forEach(openItem => {
+            openItem.classList.remove('open');
+            openItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        });
+
+        // Toggle this one
+        if (!isOpen) {
+            item.classList.add('open');
+            btn.setAttribute('aria-expanded', 'true');
+        }
+    });
+});
+
+// ── SITEMAP: Populate Products List ──
+const sitemapProductsList = document.getElementById('sitemap-products-list');
+if (sitemapProductsList) {
+    sitemapProductsList.innerHTML = products.map(p =>
+        `<li><a href="#shop">${p.name}</a><span class="sitemap-desc">${p.price} · ${p.tags.join(', ')}</span></li>`
+    ).join('');
+}
+
+// ── SITEMAP: Category Filter Links ──
+document.querySelectorAll('.sitemap-filter-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+        const filter = e.currentTarget.getAttribute('data-filter');
+        const targetBtn = document.querySelector(`.filter-btn[data-filter="${filter}"]`);
+        if (targetBtn) {
+            filterProducts(filter, targetBtn);
+        }
+    });
 });
 
 // Initialize cart count on load

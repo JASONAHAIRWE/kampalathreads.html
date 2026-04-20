@@ -208,6 +208,77 @@
         .footer-col ul li a:hover { color: var(--gold); }
         .footer-bottom { border-top: 1px solid rgba(255,248,240,0.1); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.83rem; flex-wrap: wrap; gap: 0.5rem; }
 
+        /* ════════════════════
+           HTML SITE MAP PAGE
+        ════════════════════ */
+        .sitemap-header { background: linear-gradient(135deg, var(--dark) 0%, #3D1F0A 100%); padding: 4rem 8%; text-align: center; }
+        .sitemap-header h1 { font-family: 'Playfair Display', serif; color: #FFF8F0; font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 0.5rem; }
+        .sitemap-header p { color: #C8B0A0; font-size: 1rem; }
+
+        .sitemap-body { padding: 3.5rem 8% 5rem; }
+        .sitemap-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; }
+
+        .sitemap-group { background: white; border-radius: 10px; padding: 2rem 1.8rem; box-shadow: 0 2px 16px rgba(28,12,4,0.06); border: 1px solid var(--border); transition: all 0.3s; }
+        .sitemap-group:hover { border-color: var(--primary); box-shadow: 0 8px 30px rgba(181,69,27,0.1); transform: translateY(-3px); }
+        .sitemap-group-title { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--dark); margin-bottom: 1.2rem; padding-bottom: 0.8rem; border-bottom: 2px solid var(--light); display: flex; align-items: center; gap: 0.6rem; }
+        .sitemap-icon { font-size: 1.3rem; }
+
+        .sitemap-list { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+        .sitemap-list li { display: flex; flex-direction: column; gap: 0.15rem; padding: 0.5rem 0.7rem; border-radius: 6px; transition: background 0.2s; }
+        .sitemap-list li:hover { background: var(--light); }
+        .sitemap-list li a { color: var(--primary); text-decoration: none; font-weight: 600; font-size: 0.93rem; transition: color 0.2s; }
+        .sitemap-list li a:hover { color: #8B3214; text-decoration: underline; }
+        .sitemap-desc { color: var(--muted); font-size: 0.8rem; line-height: 1.4; }
+
+        .sitemap-tech { margin-top: 2.5rem; text-align: center; padding: 1.2rem 1.5rem; background: var(--light); border-radius: 8px; border: 1px dashed var(--border); }
+        .sitemap-tech p { color: var(--muted); font-size: 0.88rem; }
+        .sitemap-tech a { color: var(--primary); font-weight: 600; text-decoration: none; }
+        .sitemap-tech a:hover { text-decoration: underline; }
+
+        /* ════════════════════
+           POLICY / TRUST PAGES
+        ════════════════════ */
+        .policy-header { background: linear-gradient(135deg, var(--dark) 0%, #3D1F0A 100%); padding: 4rem 8%; text-align: center; }
+        .policy-header h1 { font-family: 'Playfair Display', serif; color: #FFF8F0; font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 0.5rem; }
+        .policy-header p { color: #C8B0A0; font-size: 1rem; }
+
+        .policy-body { padding: 3.5rem 8% 5rem; max-width: 800px; margin: 0 auto; }
+        .policy-card { background: white; border-radius: 10px; padding: 2rem; margin-bottom: 1.5rem; box-shadow: 0 2px 12px rgba(28,12,4,0.06); border: 1px solid var(--border); }
+        .policy-card h2 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--dark); margin-bottom: 0.9rem; }
+        .policy-card p { color: var(--text); line-height: 1.8; font-size: 0.95rem; margin-bottom: 0.5rem; }
+        .policy-card ul, .policy-card ol { margin: 0.6rem 0 0.3rem 1.4rem; color: var(--text); font-size: 0.93rem; line-height: 1.85; }
+        .policy-card li { margin-bottom: 0.3rem; }
+        .policy-card a { color: var(--primary); font-weight: 600; text-decoration: none; }
+        .policy-card a:hover { text-decoration: underline; }
+
+        .policy-cta { text-align: center; margin-top: 2rem; padding: 1.5rem; background: var(--light); border-radius: 8px; border: 1px solid var(--border); }
+        .policy-cta p { color: var(--text); font-size: 0.95rem; }
+        .policy-cta a { color: var(--primary); font-weight: 700; text-decoration: none; }
+        .policy-cta a:hover { text-decoration: underline; }
+
+        /* ── SIZE GUIDE TABLE ── */
+        .size-table-wrapper { overflow-x: auto; margin-top: 0.5rem; }
+        .size-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+        .size-table th { background: var(--dark); color: #FFF8F0; padding: 0.7rem 1rem; text-align: left; font-weight: 700; font-size: 0.82rem; letter-spacing: 0.5px; }
+        .size-table th:first-child { border-radius: 6px 0 0 0; }
+        .size-table th:last-child { border-radius: 0 6px 0 0; }
+        .size-table td { padding: 0.65rem 1rem; border-bottom: 1px solid var(--border); color: var(--text); }
+        .size-table tr:nth-child(even) td { background: var(--light); }
+        .size-table tr:hover td { background: rgba(181,69,27,0.06); }
+
+        /* ── FAQ ACCORDION ── */
+        .faq-item { background: white; border-radius: 8px; margin-bottom: 0.8rem; border: 1px solid var(--border); overflow: hidden; transition: border-color 0.3s; }
+        .faq-item:hover { border-color: var(--primary); }
+        .faq-question { width: 100%; text-align: left; background: none; border: none; padding: 1.2rem 1.5rem; font-family: 'Karla', sans-serif; font-size: 1rem; font-weight: 700; color: var(--dark); cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: color 0.2s; }
+        .faq-question:hover { color: var(--primary); }
+        .faq-question::after { content: '+'; font-size: 1.4rem; font-weight: 300; color: var(--muted); transition: transform 0.3s; flex-shrink: 0; margin-left: 1rem; }
+        .faq-item.open .faq-question::after { content: '\2212'; transform: rotate(180deg); color: var(--primary); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.35s ease; }
+        .faq-item.open .faq-answer { max-height: 300px; }
+        .faq-answer p { padding: 0 1.5rem 1.2rem; color: var(--text); line-height: 1.8; font-size: 0.93rem; }
+        .faq-answer a { color: var(--primary); font-weight: 600; text-decoration: none; }
+        .faq-answer a:hover { text-decoration: underline; }
+
         /* ── ANIMATIONS ── */
         @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
 
