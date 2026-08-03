@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Discover authentic Ugandan fashion — bold kitenge prints, elegant gomesi, and contemporary African streetwear. Crafted by local artisans.">
     <title>Kampala Threads | Authentic African Fashion</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#B5451B">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Karla:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css?v=2">
 </head>
@@ -13,6 +15,7 @@
 <!-- Toast notification -->
 <div class="toast" id="toast">Item added to cart!</div>
 
+<!-- Theme Toggle & Floating Action Buttons -->
 <!-- Cart Modal -->
 <div class="cart-overlay" id="cart-overlay"></div>
 <div class="cart-modal" id="cart-modal">
@@ -25,8 +28,277 @@
     </div>
     <div class="cart-footer">
         <div class="cart-total">Total: <span id="cart-total-price">UGX 0</span></div>
-        <button class="checkout-btn">Proceed to Checkout</button>
+        <button class="checkout-btn" id="cart-checkout-btn">Proceed to Checkout</button>
     </div>
+</div>
+
+<!-- Wishlist Modal -->
+<div class="cart-overlay" id="wishlist-overlay"></div>
+<div class="cart-modal" id="wishlist-modal">
+    <div class="cart-header">
+        <h2>Your Wishlist ❤️</h2>
+        <button class="close-cart" id="close-wishlist">&times;</button>
+    </div>
+    <div class="cart-items" id="wishlist-items-container">
+        <!-- Wishlist items injected here -->
+    </div>
+    <div class="cart-footer">
+        <button class="checkout-btn" id="wishlist-add-all-btn">Add All to Cart</button>
+    </div>
+</div>
+
+<!-- Quick View Modal -->
+<div class="modal-overlay" id="quick-view-overlay"></div>
+<div class="modal-card" id="quick-view-modal">
+    <button class="close-modal" id="close-quick-view">&times;</button>
+    <div class="quick-view-content" id="quick-view-content">
+        <!-- Injected via JS -->
+    </div>
+</div>
+
+<!-- Image Lightbox Modal -->
+<div class="lightbox-overlay" id="lightbox-overlay">
+    <span class="close-lightbox" id="close-lightbox">&times;</span>
+    <img id="lightbox-img" src="" alt="Enlarged view">
+    <div id="lightbox-caption" class="lightbox-caption"></div>
+</div>
+
+<!-- Checkout Modal Wizard -->
+<div class="modal-overlay" id="checkout-overlay"></div>
+<div class="modal-card checkout-wizard-card" id="checkout-modal">
+    <button class="close-modal" id="close-checkout">&times;</button>
+    <div class="wizard-header">
+        <h2>Checkout &amp; Payment</h2>
+        <div class="wizard-steps">
+            <div class="wizard-step active" id="step-dot-1">1. Delivery</div>
+            <div class="wizard-step" id="step-dot-2">2. Payment</div>
+            <div class="wizard-step" id="step-dot-3">3. Verification</div>
+            <div class="wizard-step" id="step-dot-4">4. Receipt</div>
+        </div>
+    </div>
+    
+    <div class="wizard-body">
+        <!-- Step 1: Customer & Delivery Details -->
+        <div class="wizard-pane active" id="wizard-step-1">
+            <h3>Delivery Information</h3>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Full Name *</label>
+                    <input type="text" id="co-name" placeholder="e.g. Grace Namuli">
+                </div>
+                <div class="form-group">
+                    <label>Phone Number *</label>
+                    <input type="tel" id="co-phone" placeholder="e.g. +256 772 123 456">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" id="co-email" placeholder="e.g. grace@example.ug">
+            </div>
+            <div class="form-group">
+                <label>Delivery Region *</label>
+                <select id="co-region">
+                    <option value="5000">Kampala City (UGX 5,000)</option>
+                    <option value="10000">Greater Kampala / Wakiso (UGX 10,000)</option>
+                    <option value="18000">Upcountry Delivery (UGX 18,000)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Delivery Address / Landmark *</label>
+                <textarea id="co-address" rows="2" placeholder="e.g. Plot 45 Buganda Road, near Acacia Mall"></textarea>
+            </div>
+            <div class="wizard-actions">
+                <button class="btn-primary" id="goto-step-2">Continue to Payment &rarr;</button>
+            </div>
+        </div>
+
+        <!-- Step 2: Payment Method -->
+        <div class="wizard-pane" id="wizard-step-2">
+            <h3>Select Payment Method</h3>
+            <div class="payment-methods">
+                <label class="payment-option active">
+                    <input type="radio" name="paymethod" value="momo" checked>
+                    <div class="pay-info">
+                        <span class="pay-title">📲 MTN Mobile Money</span>
+                        <span class="pay-sub">Instant STK push prompt to your phone</span>
+                    </div>
+                </label>
+                <label class="payment-option">
+                    <input type="radio" name="paymethod" value="airtel">
+                    <div class="pay-info">
+                        <span class="pay-title">📱 Airtel Money</span>
+                        <span class="pay-sub">Instant Airtel Money prompt</span>
+                    </div>
+                </label>
+                <label class="payment-option">
+                    <input type="radio" name="paymethod" value="card">
+                    <div class="pay-info">
+                        <span class="pay-title">💳 Visa / Mastercard</span>
+                        <span class="pay-sub">Secure online card payment</span>
+                    </div>
+                </label>
+                <label class="payment-option">
+                    <input type="radio" name="paymethod" value="cod">
+                    <div class="pay-info">
+                        <span class="pay-title">💵 Cash on Delivery</span>
+                        <span class="pay-sub">Pay upon receiving your package (Kampala only)</span>
+                    </div>
+                </label>
+            </div>
+            <div class="order-summary-box">
+                <div class="summary-row"><span>Subtotal:</span><span id="co-subtotal">UGX 0</span></div>
+                <div class="summary-row"><span>Delivery Fee:</span><span id="co-delivery-fee">UGX 5,000</span></div>
+                <div class="summary-row total"><span>Grand Total:</span><span id="co-grand-total">UGX 0</span></div>
+            </div>
+            <div class="wizard-actions">
+                <button class="btn-outline" id="goto-step-1" style="color:var(--dark); border-color:var(--border);">&larr; Back</button>
+                <button class="btn-primary" id="goto-step-3">Proceed to Pay &rarr;</button>
+            </div>
+        </div>
+
+        <!-- Step 3: Verification & MoMo STK Push Simulator -->
+        <div class="wizard-pane" id="wizard-step-3">
+            <h3>Payment Verification</h3>
+            <div class="momo-sim-box" id="momo-sim-box">
+                <div class="phone-mockup">
+                    <div class="phone-screen">
+                        <div class="stk-icon">📲</div>
+                        <h4 id="stk-prompt-title">Mobile Money Payment Request</h4>
+                        <p id="stk-prompt-text">Sending STK Push prompt to <strong id="momo-phone-display">+256 7XX XXX XXX</strong> for amount <strong id="momo-amount-display">UGX 0</strong>.</p>
+                        <div class="momo-pin-input">
+                            <label>Enter Mobile Money PIN (Simulated):</label>
+                            <input type="password" maxlength="4" placeholder="••••" value="1234" id="sim-pin-input">
+                        </div>
+                        <div class="stk-spinner" id="stk-spinner"></div>
+                        <button class="btn-primary" id="sim-confirm-pay" style="width:100%; margin-top:1rem;">Approve Payment (Simulate)</button>
+                    </div>
+                </div>
+            </div>
+            <div class="wizard-actions">
+                <button class="btn-outline" id="goto-step-2-back" style="color:var(--dark); border-color:var(--border);">&larr; Back</button>
+            </div>
+        </div>
+
+        <!-- Step 4: Digital Receipt Invoice -->
+        <div class="wizard-pane" id="wizard-step-4">
+            <div class="invoice-box" id="invoice-printable">
+                <div class="invoice-header">
+                    <div class="inv-logo">Kampala<span>Threads</span></div>
+                    <div class="inv-badge">PAID</div>
+                </div>
+                <div class="inv-meta">
+                    <div><strong>Order Ref:</strong> <span id="inv-ref">KT-98241</span></div>
+                    <div><strong>Date:</strong> <span id="inv-date"></span></div>
+                    <div><strong>Customer:</strong> <span id="inv-cust-name"></span></div>
+                    <div><strong>Phone:</strong> <span id="inv-cust-phone"></span></div>
+                    <div><strong>Delivery Address:</strong> <span id="inv-cust-addr"></span></div>
+                </div>
+                <table class="inv-table">
+                    <thead><tr><th>Item</th><th>Qty</th><th>Price</th></tr></thead>
+                    <tbody id="inv-items-body"></tbody>
+                </table>
+                <div class="inv-totals">
+                    <div>Subtotal: <span id="inv-subtotal"></span></div>
+                    <div>Delivery: <span id="inv-delivery"></span></div>
+                    <div class="inv-grand">Total Paid: <span id="inv-total"></span></div>
+                </div>
+            </div>
+            <div class="wizard-actions" style="margin-top:1.5rem;">
+                <button class="btn-outline" id="print-invoice-btn" style="color:var(--dark); border-color:var(--border);">🖨️ Print / Download Invoice</button>
+                <button class="btn-primary" id="close-checkout-finish">Complete &amp; Return to Shop</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bespoke Custom Measurement Modal -->
+<div class="modal-overlay" id="bespoke-overlay"></div>
+<div class="modal-card" id="bespoke-modal">
+    <button class="close-modal" id="close-bespoke">&times;</button>
+    <div class="bespoke-header">
+        <h2>📏 Request Custom Tailoring</h2>
+        <p>Send your exact measurements for a bespoke tailored fit from Kampala's finest artisans.</p>
+    </div>
+    <form id="bespoke-form">
+        <div class="form-row">
+            <div class="form-group">
+                <label>Your Name *</label>
+                <input type="text" id="bm-name" required placeholder="e.g. Sarah Akello">
+            </div>
+            <div class="form-group">
+                <label>Phone / WhatsApp *</label>
+                <input type="tel" id="bm-phone" required placeholder="+256 7XX XXX XXX">
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Garment Type *</label>
+            <select id="bm-garment">
+                <option value="Custom Gomesi">Custom Gomesi</option>
+                <option value="Kitenge Dress">Kitenge Dress</option>
+                <option value="Men's Custom Kanzu">Men's Custom Kanzu</option>
+                <option value="Men's Tailored Suit/Shirt">Men's Tailored Suit / Shirt</option>
+                <option value="Kids Custom Outfit">Kids Custom Outfit</option>
+            </select>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label>Bust / Chest (cm)</label>
+                <input type="number" id="bm-chest" placeholder="e.g. 92">
+            </div>
+            <div class="form-group">
+                <label>Waist (cm)</label>
+                <input type="number" id="bm-waist" placeholder="e.g. 74">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label>Hips (cm)</label>
+                <input type="number" id="bm-hips" placeholder="e.g. 98">
+            </div>
+            <div class="form-group">
+                <label>Full Height (cm)</label>
+                <input type="number" id="bm-height" placeholder="e.g. 170">
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Fabric / Design Preferences &amp; Special Instructions</label>
+            <textarea id="bm-notes" rows="3" placeholder="Describe pattern preferences, colors, or event dates..."></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Submit Custom Order Request ✂️</button>
+    </form>
+</div>
+
+<!-- Product Review Modal -->
+<div class="modal-overlay" id="review-overlay"></div>
+<div class="modal-card" id="review-modal">
+    <button class="close-modal" id="close-review">&times;</button>
+    <div class="review-modal-header">
+        <h2>⭐ Write a Review</h2>
+        <p id="review-product-title">For Product</p>
+    </div>
+    <form id="review-form">
+        <input type="hidden" id="review-product-id">
+        <div class="form-group">
+            <label>Your Name *</label>
+            <input type="text" id="rev-name" required placeholder="e.g. David Mukasa">
+        </div>
+        <div class="form-group">
+            <label>Rating *</label>
+            <div class="star-rating-select" id="star-rating-select">
+                <span data-star="1">★</span>
+                <span data-star="2">★</span>
+                <span data-star="3">★</span>
+                <span data-star="4">★</span>
+                <span data-star="5" class="active">★</span>
+            </div>
+            <input type="hidden" id="rev-rating" value="5">
+        </div>
+        <div class="form-group">
+            <label>Review Comment *</label>
+            <textarea id="rev-comment" required rows="3" placeholder="How did this piece fit? Share your thoughts on fabric, sizing, and style..."></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Submit Review ✨</button>
+    </form>
 </div>
 
 <!-- ══ NAVIGATION ══ -->
@@ -39,9 +311,14 @@
         <li><a href="#contact" id="nav-contact">Contact</a></li>
     </ul>
     <div class="nav-actions">
-        <a href="#" class="cart-link" id="cart-btn">
+        <button class="theme-toggle-btn" id="theme-toggle" title="Toggle Theme" aria-label="Toggle Theme">🌙</button>
+        <a href="#" class="cart-link" id="wishlist-btn" title="View Wishlist">
+            <span class="cart-count" id="wishlist-count">0</span>
+            ❤️ Wishlist
+        </a>
+        <a href="#" class="cart-link" id="cart-btn" title="View Cart">
             <span class="cart-count" id="cart-count">0</span>
-            &#128722; Cart
+            🛒 Cart
         </a>
         <button class="mobile-menu-btn" id="mobile-menu-btn">&#9776;</button>
     </div>
@@ -125,6 +402,24 @@
         <h1>Our Collection</h1>
         <p>Browse authentic Ugandan fashion for all occasions</p>
     </div>
+    
+    <div class="shop-controls-bar">
+        <div class="search-box">
+            <input type="text" id="shop-search-input" placeholder="🔍 Search kitenge, gomesi, kanzu, dresses...">
+        </div>
+        <div class="sort-box">
+            <label for="shop-sort-select">Sort by:</label>
+            <select id="shop-sort-select">
+                <option value="default">Default Featured</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+                <option value="name-asc">Name: A to Z</option>
+                <option value="rating-high">Top Rated ⭐</option>
+            </select>
+        </div>
+        <button class="bespoke-cta-btn" id="open-bespoke-btn">📏 Custom Tailoring</button>
+    </div>
+
     <div class="category-filters">
         <button class="filter-btn active" data-filter="all">All Items</button>
         <button class="filter-btn" data-filter="women">Women</button>
@@ -133,6 +428,7 @@
         <button class="filter-btn" data-filter="traditional">Traditional</button>
         <button class="filter-btn" data-filter="modern">Modern</button>
     </div>
+
     <div class="shop-grid-section">
         <div class="products-grid" id="shop-products"></div>
     </div>

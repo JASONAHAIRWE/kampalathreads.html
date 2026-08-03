@@ -1,0 +1,17 @@
+{
+  "short_name": "KampalaThreads",
+  "name": "Kampala Threads | Authentic African Fashion",
+  "description": "Discover authentic Ugandan fashion — bold kitenge prints, elegant gomesi, and contemporary African streetwear.",
+  "icons": [
+    {
+      "src": "wrap dress.jpeg",
+      "sizes": "192x192 512x512",
+      "type": "image/jpeg"
+    }
+  ],
+  "start_url": "./index.html",
+  "background_color": "#1C0C04",
+  "theme_color": "#B5451B",
+  "display": "standalone",
+  "orientation": "portrait"
+}
